@@ -6,13 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">.
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 <body>
+    <div class="jumbotron bg-dark text-center mr-2 ml-2">
+        <span class="text-light h2">Anytime is Train Time</span>
+        <p class="text-light h3">Choo-Choo</p>
+      </div>
+    
+      <div class="container p-0">
+        <nav class="navbar bg-light border">
+          <span class="navbar-brand mb-0 h1">Current Train Schedule</span>
+        </nav>
+        <table class="table table-sm border">
+          <thead>
+            <tr>
+              <th scope="col">Train name</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Frequency (min)</th>
+              <th scope="col">Next Arrival</th>
+              <th scope="col">Minutes Away</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">Guy</td>
+              <td class="role">worker</td>
+              <td class="start-date">1/1/2019</td>
+              <td class="months-worked">1</td>
+              <td class="monthly-rate">7 pennies</td>
+            </tr>
+          </tbody>
+        </table>
     
     
+        <div class="container p-0">
+          <nav class="navbar bg-light border">
+            <span class="navbar-brand mb-0 h1">Add Train</span>
+          </nav>
+        </div>
+        <div class="container border mb-3">
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/app.js"></script>
+    
+          <form>
+            <div class="form-group">
+              <label>Train Name</label>
+              <input id="train-name" class="form-control">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>Destination</label>
+              <input class="form-control" id="destination">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>First Train Time (HH:mm - military time)</label>
+              <input class="form-control" id="first-train-time">
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label>Frequency (min)</label>
+              <input class="form-control" id="frequency">
+              <small class="form-text text-muted"></small>
+            </div>
+            <button type="button" id="submit" class="btn btn-primary mb-2">Submit</button>
+    
+          </form>
+        </div>
+    
+    
+      </div>
+      <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./assets/app.js"></script>
 </body>
 </html>
