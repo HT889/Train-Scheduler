@@ -25,12 +25,22 @@ var firebaseConfig = {
       destination = $("#destination").val().trim();
       firstTrainTime = $("#first-train-time").val().trim();
       frequency = $("#frequency").val().trim();
+      //new stuff ========================
+      var firstTimeConverted = moment(firstTrainTime, "HH:mm").subtract(1, "years");
+      var currentTime = moment();
+      var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+      var tRemainder = diffTime % frequency;
+      var tMinutesTillTrain = frequency - tRemainder;
+      var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+      parseInt(tMinutesTillTrain);
+      //================================================
 
       database.ref().push({
         trainName: trainName,
         destination: destination,
         firstTrainTime: firstTrainTime,
-        frequency: frequency
+        frequency: frequency,
+        tMinutesTillTrain: tMinutesTillTrain  //new stuff
       })
 
       $("#train-name").val("");
@@ -48,13 +58,14 @@ var firebaseConfig = {
       var tRemainder = diffTime % snapshot.val().frequency;
       var tMinutesTillTrain = snapshot.val().frequency - tRemainder;
       var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+      
 
 
 
 
 
-      // console.log(snapshot.val())
-      $("#main-table").append($("<tr>").append($("<td>").text(snapshot.val().trainName), $("<td>").text(snapshot.val().destination), $("<td>").text(snapshot.val().frequency), $("<td>").text(nextTrain), $("<td>").text(tMinutesTillTrain)))
+      console.log(snapshot.val())
+      $("#main-table").append($("<tr>").append($("<td>").text(snapshot.val().trainName), $("<td>").text(snapshot.val().destination), $("<td>").text(snapshot.val().frequency), $("<td>").text(nextTrain), $("<td>").text(snapshot.val().tMinutesTillTrain)))
     })
     // console.log(tMinutesTillTrain)
 
