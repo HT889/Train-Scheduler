@@ -58,6 +58,7 @@ var firebaseConfig = {
       var tRemainder = diffTime % snapshot.val().frequency;
       var tMinutesTillTrain = snapshot.val().frequency - tRemainder;
       var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+      nextTrain.format("MMM Do, YYYY hh:mm:ss");
       
 
 
