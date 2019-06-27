@@ -32,6 +32,8 @@ var firebaseConfig = {
       var tRemainder = diffTime % frequency;
       var tMinutesTillTrain = frequency - tRemainder;
       var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+      nextTrain = moment(nextTrain).format("MMM Do, YYYY hh:mm");
+
       parseInt(tMinutesTillTrain);
       //================================================
 
@@ -40,7 +42,8 @@ var firebaseConfig = {
         destination: destination,
         firstTrainTime: firstTrainTime,
         frequency: frequency,
-        tMinutesTillTrain: tMinutesTillTrain  //new stuff
+        tMinutesTillTrain: tMinutesTillTrain,  //new stuff
+        nextTrain: nextTrain
       })
 
       $("#train-name").val("");
@@ -58,15 +61,11 @@ var firebaseConfig = {
       var tRemainder = diffTime % snapshot.val().frequency;
       var tMinutesTillTrain = snapshot.val().frequency - tRemainder;
       var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-      nextTrain.format("MMM Do, YYYY hh:mm:ss");
-      
+      // console.log("NEXT TRAIIIIIIN" + nextTrain);
+      nextTrain = moment(nextTrain).format("MMM Do, YYYY hh:mm");
 
-
-
-
-
-      console.log(snapshot.val())
-      $("#main-table").append($("<tr>").append($("<td>").text(snapshot.val().trainName), $("<td>").text(snapshot.val().destination), $("<td>").text(snapshot.val().frequency), $("<td>").text(nextTrain), $("<td>").text(snapshot.val().tMinutesTillTrain)))
+      // console.log(snapshot.val())
+      $("#main-table").append($("<tr>").append($("<td>").text(snapshot.val().trainName), $("<td>").text(snapshot.val().destination), $("<td>").text(snapshot.val().frequency), $("<td>").text(snapshot.val().nextTrain), $("<td>").text(snapshot.val().tMinutesTillTrain)))
     })
     // console.log(tMinutesTillTrain)
 
